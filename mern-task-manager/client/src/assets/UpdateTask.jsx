@@ -13,6 +13,7 @@ const UpdateTask = () => {
         const navigate = useNavigate();
                
 useEffect ( () =>{
+    if (window.confirm('Are you sure you want to delete this task?'))
     axios.get (`http://localhost:5000/getTask/ ${id}`)
     .then(result => {
         console.log(result) 
@@ -25,7 +26,7 @@ useEffect ( () =>{
     .catch(error => console.log(error))
 }, [id]);
 
- // updating the data whenupdate button is clicked
+ // updating the data when update button is clicked
  const submit = (e) => {
     e.preventDefault()
     const formdata= {

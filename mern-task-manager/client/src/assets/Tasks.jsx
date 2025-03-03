@@ -15,11 +15,11 @@ const Tasks = () => {
     }, [])
     
     const DeleteTask = (taskId) => {
-      if (window.confirm('Confirm task deletion'))
+      if (window.confirm('Are you sure you want to delete this task?'))
         axios.delete(`http://localhost:5000/task/${taskId}`)
         .then( () => {
           setTasks(tasks.filter(task => task._id !==taskId))
-          alert('Task deleted')
+          alert('Task deleted successfully')
         })
         .catch(error => console.log(error))
     }
@@ -47,12 +47,12 @@ const Tasks = () => {
         <tbody>
         {
         tasks.map((task, index) => (
-              <tr key={index} className="bg-gray-100 border-b"  onClick={() => viewTaskDetails(task._id)}>
-                <td className="px-2 py-2 border border-gray-200">{index + 1}</td>
-                <td className="px-2 py-2  border border-gray-200">{task.title}</td>
-                <td className="px-2 py-2 border border-gray-200">{task.description}</td>
-                <td className="px-2 py-2 border border-gray-200">{task.status}</td>
-                <td className="px-2 py-2 border border-gray-200">{task.date}</td>
+              <tr key={index} className="bg-gray-100 border-b">
+                <td className="px-2 py-2 border border-gray-200" onClick={() => viewTaskDetails(task._id)}>{index + 1}</td>
+                <td className="px-2 py-2  border border-gray-200"onClick={() => viewTaskDetails(task._id)}>{task.title}</td>
+                <td className="px-2 py-2 border border-gray-200"onClick={() => viewTaskDetails(task._id)}>{task.description}</td>
+                <td className="px-2 py-2 border border-gray-200"onClick={() => viewTaskDetails(task._id)}>{task.status}</td>
+                <td className="px-2 py-2 border border-gray-200" onClick={() => viewTaskDetails(task._id)}>{task.date}</td>
                 <td className="px-2 py-2 border border-gray-200">
                     <Link to = {`/update/${task._id}`}>
                     <button className='bg-blue-600 text-white font-bold py-2 px-4 mx-2 rounded'>Edit</button> 

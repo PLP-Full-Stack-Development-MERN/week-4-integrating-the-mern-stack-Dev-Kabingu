@@ -30,14 +30,14 @@ app.put("/updateTask/:id", (req, res) => {
     const id = req.params.id;
     TaskModel.findByIdAndUpdate(id, req.body, { new: true }) 
     .then(task => res.status(200).json(task)) 
-    .catch(err => res.status(500).json(err));
+    .catch(error => res.status(500).json({message: error.message}));
 });
 
 // delete task
 app.delete('/task/:id', (req, res) => {
     const id = req.params.id
     TaskModel.findByIdAndDelete(id)
-    .then(removedTask => res.json({message: 'Task deleted'}))
+    .then(removedTask => res.json({message: 'Task successfully deleted'}))
     .catch(error => res.status(500).json({message: error.message}))
 })
 // getting a task details
