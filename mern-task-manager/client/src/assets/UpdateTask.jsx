@@ -13,7 +13,6 @@ const UpdateTask = () => {
         const navigate = useNavigate();
                
 useEffect ( () =>{
-    if (window.confirm('Are you sure you want to delete this task?'))
     axios.get (`http://localhost:5000/getTask/ ${id}`)
     .then(result => {
         console.log(result) 

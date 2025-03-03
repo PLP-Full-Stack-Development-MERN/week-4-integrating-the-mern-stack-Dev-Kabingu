@@ -12,7 +12,6 @@ const TaskDetails = () => {
         axios.get(`http://localhost:5000/task/${id}`)
         .then(result => setTask(result.data))
         .catch(error => console.log(error))
-        alert("Task updated successfully")
     }, [id])
     if (!task){
         return (
