@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams,useNavigate } from 'react-router-dom'
+import { useParams,useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 
@@ -25,11 +25,14 @@ useEffect ( () =>{
     .catch(error => console.log(error))
 }, [id]);
 
- // updating the data
+ // updating the data whenupdate button is clicked
  const submit = (e) => {
     e.preventDefault()
     const formdata= {
-        title, description, status, date
+        title,
+       description, 
+       status, 
+       date
     }
     axios.put(`http://localhost:5000/UpdateTask/${id}`, formdata)
     .then(result => {
@@ -43,6 +46,9 @@ useEffect ( () =>{
     <div>
     <div className='w-full flex align-center mt-20 justify-center'>
         <form className='w-sm' onSubmit={submit}>
+
+        <Link to ="/">  <button className='bg-blue-600 text-white font-bold py-2 px-4 mx-2 rounded'>Back</button> </Link>
+
             <h2 className='font-bold text-2xl mb-5'>Update Task</h2>
             <div className='mb-2'>
                 <label htmlFor="" className='block text-xl'>Title:</label>

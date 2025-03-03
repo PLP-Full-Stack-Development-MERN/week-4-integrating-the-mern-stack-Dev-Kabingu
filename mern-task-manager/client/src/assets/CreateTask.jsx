@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios"
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
  
 const createTask = () => {
     const [title, setTitle] = useState()
@@ -29,6 +29,9 @@ const createTask = () => {
         <div className='w-full flex align-center mt-20 justify-center'>
 
             <form className='w-sm' onSubmit={submit}>
+       
+                 <Link to = "/"> <button className='bg-blue-600 text-white font-bold py-2 px-4 mx-2 rounded'>Back</button> </Link>  
+                
                 <h2 className='font-bold text-2xl mb-5'>Add Task</h2>
                 <div className='mb-2'>
                     <label htmlFor="" className='block text-xl'>Title:</label>
